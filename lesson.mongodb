@@ -13,9 +13,43 @@ cls
 // coneect to database
 use("appdb")
 
-
-
 // show collections available
 show collections
 
-//
+// insert data
+db.users.insertOne({name:"John", age:30})
+
+// list record
+db.users.find()
+
+// nested fields
+db.users.insertOne({name:"Sally", age:19, address:{city:"New York", state:"NY"}, hobbies:["running"]})
+db.users.find()
+
+// insert many records
+db.users.insertMany([{name:"Mario"},{name:"Luigi"}])
+
+// limit results
+db.users.find().limit(2)
+
+// sorting ascending
+db.users.find().sort({name:1})
+// sorting descending
+db.users.find().sort({name:-1})
+
+// sort and limit
+db.users.find().sort({name:1}).limit(2)
+db.users.find().sort({age:-1, name:1}).limit(2)
+
+// skip
+db.users.find().skip(2)
+
+// find where
+db.users.find({name:"John"})
+
+// find select
+db.users.find({name:"John"},{_id:0, name:1, age:1})
+db.users.find({name:"John"}, {age:0})
+
+// logical operators
+db.users.find({age:{$gt:20}})
