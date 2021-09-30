@@ -1,0 +1,21 @@
+// show database available
+show dbs:
+
+// coneect to database
+use("appdb")
+
+// drop db
+db.drop()
+
+// clear screen
+cls
+
+// coneect to database
+use("appdb")
+
+
+
+// show collections available
+show collections
+
+//
