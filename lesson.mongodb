@@ -77,3 +77,31 @@ db.users.find({age:{$not:{$gt:20}}})
 // expressions
 db.users.insertMany([{name:"Mario", debt:0, balance:100},{name:"Luigi", debt:10, balance:0}])
 db.users.find({$expr:{$gt:["$debt","$balance"]}})
+
+// find ex
+db.users.find({"address.street:":"123 Main St"})
+
+// one
+db.users.findOne({name:"John"})
+
+// inc
+db.users.updateOne({name:"John"},{$inc:{age:3}})
+
+// rename
+db.users.updateOne({name:"John"},{$rename:{age:"age_old"}})
+
+// unset
+db.users.updateOne({name:"John"},{$unset:{age:1}})
+
+// push
+db.users.updateOne({name:"John"},{$push:{hobbies:"running"}})
+db.users.findOne({name:"John"})
+
+// pull
+db.users.updateOne({name:"John"},{$pull:{hobbies:"running"}})
+
+// update many
+db.users.updateMany({name:"Mario"},{$set:{age:20}})
+
+// replace
+db.users.replaceOne({name:"Mario"},{name:"Mario", age:20})
