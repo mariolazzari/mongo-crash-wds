@@ -53,3 +53,27 @@ db.users.find({name:"John"}, {age:0})
 
 // logical operators
 db.users.find({age:{$gt:20}})
+db.users.find({age:{$gte:20}})
+db.users.find({age:{$lt:20}})
+db.users.find({age:{$lte:20}})
+
+// in
+db.users.find({age:{$in:[19,30]}})
+
+// exists
+db.users.find({age:{$exists:true}})
+db.users.find({age:{$exists:false}})
+
+// and
+db.users.find({age:{$gt:20, $lt:40}})
+db.users.find({$and:[{age:{$gt:20}},{name:"Mario"}]})
+
+// or
+db.users.find({$or:[{age:{$gt:20}},{name:"Mario"}]})
+
+// not
+db.users.find({age:{$not:{$gt:20}}})
+
+// expressions
+db.users.insertMany([{name:"Mario", debt:0, balance:100},{name:"Luigi", debt:10, balance:0}])
+db.users.find({$expr:{$gt:["$debt","$balance"]}})
