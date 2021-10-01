@@ -105,3 +105,9 @@ db.users.updateMany({name:"Mario"},{$set:{age:20}})
 
 // replace
 db.users.replaceOne({name:"Mario"},{name:"Mario", age:20})
+
+// delete
+db.users.deleteOne({name:"John"})
+
+// delete many
+db.users.deleteMany({name:"John"})
